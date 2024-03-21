@@ -36,6 +36,12 @@
           title: 'logo'
         }
       }
+    },
+
+    methods:{
+      getImagePath(img){
+        return new URL (`../assets/img/${img}`, import.meta.url).href
+      }
     }
   }
 </script>
@@ -49,7 +55,7 @@
         </ul>
       </nav>
       <div class="logo d_flex debug">
-        <img src="../assets/img/boolean-logo.png" :alt="img.title">
+        <img :src=getImagePath(img.path) :alt="img.title">
       </div>
       <nav class="d_flex debug" id="nav_right">
         <ul class="d_flex">

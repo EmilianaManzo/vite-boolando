@@ -1,7 +1,11 @@
 
 <script>
   export default {
-    
+    data(){
+      return{
+
+      }
+    }
   }
 </script>
 
@@ -11,6 +15,10 @@
   </main>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+   @use '../assets/scss/partials/variables' as *;
 
+  main{
+    height: 1000px; //da cancellare
+  }
 </style>
