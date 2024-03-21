@@ -8,5 +8,20 @@
 
 body{
   font-family: $font;
-  background-color: red;
+  
+}
+
+img{
+  max-width: 100%;
+}
+
+.container{
+  width: 98%;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+// Utiliy
+.d_flex{
+  display: flex;
 }

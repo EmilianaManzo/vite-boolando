@@ -6,9 +6,9 @@
 </script>
 
 <template>
-  <div>
-
-  </div>
+  <main>
+    <div class="container">main</div>
+  </main>
 </template>
 
 <style scoped>
