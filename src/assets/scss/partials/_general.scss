@@ -12,11 +12,11 @@ body{
 }
 
 img{
-  max-width: 100%;
+  max-width: $width_img;
 }
 
 .container{
-  width: 98%;
+  width: 90%;
   max-width: 1380px;
   margin: 0 auto;
 }
@@ -24,4 +24,21 @@ img{
 // Utiliy
 .d_flex{
   display: flex;
+}
+
+nav ul li{
+  list-style: none;
+  padding-right: 10px;
+}
+
+nav ul li a{
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav ul li a:hover{
+  text-decoration: underline;
+  opacity: .7;
 }
