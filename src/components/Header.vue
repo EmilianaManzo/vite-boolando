@@ -3,7 +3,38 @@
   export default {
     data(){
       return{
-
+        navLeft :[
+          {
+            genere : 'Donna',
+            link: '#'
+          },
+          {
+            genere : 'Uomo',
+            link: '#'
+          },
+          {
+            genere : 'Bambini',
+            link: '#'
+          },
+        ],
+        navRight :[
+          {
+            icon : '<i class="fa-regular fa-user"></i>',
+            link: '#'
+          },
+          {
+            icon : '<i class="fa-regular fa-heart"></i>',
+            link: '#'
+          },
+          {
+            icon : '<i class="fa-solid fa-bag-shopping"></i>',
+            link: '#'
+          },
+        ],
+        img: {
+          path: 'boolean-logo.png',
+          title: 'logo'
+        }
       }
     }
   }
@@ -14,19 +45,15 @@
     <div class="container d_flex">
       <nav class="d_flex debug">
         <ul class="d_flex">
-          <li><a href="">Donna</a></li>
-          <li><a href="">Uomo</a></li>
-          <li><a href="">Bambini</a></li>
+          <li v-for="(nav, indice) in navLeft" :key="indice"><a :href="nav.link">{{ nav.genere }}</a></li>
         </ul>
       </nav>
       <div class="logo d_flex debug">
-        <img src="../assets/img/boolean-logo.png" alt="">
+        <img src="../assets/img/boolean-logo.png" :alt="img.title">
       </div>
       <nav class="d_flex debug" id="nav_right">
         <ul class="d_flex">
-          <li><a href=""><i class="fa-brands fa-square-facebook"></i></a></li>
-          <li><a href=""><i class="fa-regular fa-heart"></i></a></li>
-          <li><a href=""><i class="fa-solid fa-bag-shopping"></i></a></li>
+          <li v-for="(nav, indice) in navRight" :key="indice"><a :href="nav.link" v-html="nav.icon"></a></li>
         </ul>
       </nav>
     </div>
@@ -49,6 +76,18 @@
       height: 100%;
       align-items: center;
       justify-content: space-between;
+      nav{
+        width: calc(100% / 3 );
+      }
+      .logo{
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        
+      }
+      #nav_right{
+        justify-content: flex-end;
+      }
     }
   }
 
