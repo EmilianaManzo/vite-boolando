@@ -19,15 +19,18 @@
 
 <template>
   <main>
-    <div class="row">
+    <div class="container">
+      <div class="row">
       
-      <ProductCard 
-        v-for="product in dataproducts.products"
-        :key="product.id"
-        :product="product"
-      />
-      <!-- utilizzo :product="product" per passarmi l'oggetto ciclato in ProductCard -->
+        <ProductCard 
+          v-for="product in dataproducts.products"
+          :key="product.id"
+          :product="product"
+        />
+        <!-- utilizzo :product="product" per passarmi l'oggetto ciclato in ProductCard -->
+      </div>
     </div>
+    
   </main>
 </template>
 

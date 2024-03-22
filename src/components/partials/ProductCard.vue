@@ -6,12 +6,36 @@
 
     },
 
+    data(){
+      return{
+        finalPrice: ''
+      }
+    },
+
     methods:{
       getImagePath(img){
         return new URL (`../../assets/img/${img}`, import.meta.url).href
       },
 
+      getDiscount(product){
+        product.badges.forEach(badge => { 
+          
+          if(badge.value == '-50%'){
+          this.finalPrice = (product.price - (product.price * 0.50)).toFixed(2)
+  
+          }else if(badge.value == '-30%'){
+           this.finalPrice = (product.price -  (product.price * 0.30)).toFixed(2)
+          }
+          
+        })
+        
+        return this.finalPrice
 
+      }
+    },
+
+    mounted(){
+  
     }
   }
 </script>
@@ -24,10 +48,11 @@
               <div class="card-images">
                 <img :src="getImagePath(product.frontImage)" :alt="product.frontImage">
                 <img class="secondary-image" :src="getImagePath(product.backImage)" :alt="product.backImage">
-                <div class="favourite">
+                <div class="favourite" :class="{'whishlist': product.isInFavorites}" @click=" product.isInFavorites = !product.isInFavorites">
                   <i class="fa-solid fa-heart"></i>
                 </div>
                 <div class="badges" >
+                  <!-- mi mette prima sostenibilità e poi la percentuale di sconto perche sono cosi nel database, ma se volessi metterli al contrario? -->
                   <span class="badge" v-for="(badge, indice) in product.badges" :class="badge.type" :key="`b-${indice}`">{{ badge.value }}</span>
                 </div>
               </div>
@@ -36,8 +61,8 @@
                 <div class="brand">{{ product.brand }}</div>
                 <div class="product-name">{{ product.name }}</div>
                 <div class="price">
-                  <span class="new_price">{{ product.price }}&euro;</span>
-                  <span class="old_price">29,99&euro;</span>
+                  <span class="new_price" v-if= "getDiscount(product)">{{ getDiscount(product) }} &euro;</span>
+                  <span class="new_price" :class="{'old_price':getDiscount(product)}">{{ product.price }}&euro;</span>
                 </div>
               </div>
             </div>
@@ -76,6 +101,10 @@
             color: red;
           }
         }
+
+        .whishlist{
+          color: red;
+        }
     }
 
     .badges{
@@ -90,11 +119,13 @@
         text-transform: capitalize;
 
         &.discount{
+          margin-right: 30px;
           background-color: red;
         }
 
         &.tag{
           background-color: green;
+          margin-right: 5px;
         }
 
       }
@@ -111,13 +142,15 @@
       }
 
       .new_price{
-        color: red;;
+        color: red;
         font-weight: 700;
         padding-right: 10px;
       }
 
       .old_price{
         text-decoration: line-through;
+        color: black;
+        font-weight: normal;
       }
 
 
