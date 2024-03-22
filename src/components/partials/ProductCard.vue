@@ -1,6 +1,16 @@
 <script>
   export default {
-    
+    props:{
+      // richiamo product e gli dico che è un oggetto 
+      product : Object
+
+    },
+
+    methods:{
+      getImagePath(img){
+        return new URL (`../../assets/img/${img}`, import.meta.url).href
+      }
+    }
   }
 </script>
 
@@ -10,14 +20,14 @@
     <div class="card">
               
               <div class="card-images">
-                <img src="" alt="1">
-                <img class="secondary-image" src="" alt="1">
+                <img :src="getImagePath(product.frontImage)" :alt="product.frontImage">
+                <img class="secondary-image" :src="getImagePath(product.backImage)" :alt="product.backImage">
                 <div class="favourite">
                   <i class="fa-solid fa-heart"></i>
                 </div>
                 <div class="badges">
                   <span class="badge discount">-50%</span>
-                  <span class="badge tag">sostenibilità</span>
+                  <span class="badge tag">{{  }}</span>
                 </div>
               </div>
               
@@ -36,6 +46,6 @@
 
 <style lang="scss" scoped>
   @use '../../assets/scss/partials/general' as *;
-  
+
 
 </style>

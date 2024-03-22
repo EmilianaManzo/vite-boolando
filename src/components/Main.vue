@@ -1,19 +1,18 @@
 
 <script>
   import ProductCard from './partials/ProductCard.vue';
-  import products from '../assets/data/db.json';
+  import dataproducts from '../assets/data/db.json';
   export default {
     components:{
       ProductCard
     },
     data(){
       return{
-        products
+        dataproducts
       }
     },
-
     mounted(){
-      console.log(this.products);
+      console.log(this.dataproducts);
     }
   }
 </script>
@@ -21,7 +20,13 @@
 <template>
   <main>
     <div class="row">
-      <ProductCard />
+      
+      <ProductCard 
+        v-for="product in dataproducts.products"
+        :key="product.id"
+        :product="product"
+      />
+      <!-- utilizzo :product="product" per passarmi l'oggetto ciclato in ProductCard -->
     </div>
   </main>
 </template>
