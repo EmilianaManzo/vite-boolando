@@ -42,3 +42,13 @@ nav ul li a:hover{
   text-decoration: underline;
   opacity: .7;
 }
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col{
+  width: calc(100% / 3);
+  padding: 0 10px;
+}
